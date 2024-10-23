@@ -1,3 +1,5 @@
+name: Validate infra changes
+
 on:
   issue_comment:
 
