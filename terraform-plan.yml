@@ -1,0 +1,17 @@
+name: terraform-plan
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test tf plan
+        run: |
+          sleep 30s
