@@ -34,3 +34,9 @@ jobs:
           status: ${{ job.status }}
           context: Infra check
           sha: ${{ github.event.workflow_run.head_sha }}
+      - name: Set check status
+        uses: myrotvorets/set-commit-status-action@v2.0.1
+        with:
+          status: ${{ job.status }}
+          context: "Another commit status!"
+          sha: ${{ github.event.workflow_run.head_sha }}
