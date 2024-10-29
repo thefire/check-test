@@ -50,4 +50,4 @@ jobs:
         with:
           status: ${{ job.status }}
           context: Infra check comment
-          sha: ${{ steps.pr-ref.outputs.head_ref }}
+          sha: ${{ steps.pr-ref.outputs.head_sha }}
