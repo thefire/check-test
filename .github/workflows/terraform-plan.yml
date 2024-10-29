@@ -12,6 +12,12 @@ jobs:
     name: test
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Test tf plan
         run: |
-          sleep 30s
+          sleep 10s
+          commit_msg=$(git show -s --format=%s)
+          if [[ $commit_msg =~ "fail" ]]; then
+            exit 1
+          fi
