@@ -15,8 +15,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Generate GitHub App token
+        id: generate_token
+        uses: tibdex/github-app-token@b62528385c34dbc9f38e5f4225ac829252d1ea92
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_KEY }}
       - name: Approve Pull Request
         uses: juliangruber/approve-pull-request-action@v2
         with:
-          github-token: ${{ secrets.PR_TOKEN }}
+          github-token: ${{ steps.generate_token.outputs.token }}
           number: ${{ inputs.pr }}
