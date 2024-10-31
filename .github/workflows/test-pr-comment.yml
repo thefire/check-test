@@ -1,4 +1,4 @@
-name: Test PR Review
+name: Test PR Comment
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ on:
 permissions: write-all
 
 jobs:
-  review:
+  comment:
     name: Test Review
 
     runs-on: ubuntu-latest
