@@ -25,6 +25,6 @@ jobs:
             owner: ${{ github.repository_owner }},
             repo: ${{ github.repository }},
             pull_number: ${{ inputs.pr }},
-            body: ""
+            body: "",
             event: "APPROVE"
             })
