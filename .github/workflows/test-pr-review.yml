@@ -23,7 +23,7 @@ jobs:
           script: |
             await github.rest.pulls.createReview({
             owner: ${{ github.repository_owner }},
-            repo: ${{ github.repository }},
+            repo: "check-test",
             pull_number: ${{ inputs.pr }},
             body: "",
             event: "APPROVE"
