@@ -21,8 +21,14 @@ jobs:
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_KEY }}
-      - name: Approve Pull Request
-        uses: juliangruber/approve-pull-request-action@v2
+      - name: Approve pull request by GitHub-Actions bot
+        uses: actions/github-script@v7
         with:
           github-token: ${{ steps.generate_token.outputs.token }}
-          number: ${{ inputs.pr }}
+          script: |
+            github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: ${{ inputs.pr }},
+              event: "APPROVE"
+            });
