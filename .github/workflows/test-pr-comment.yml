@@ -6,7 +6,9 @@ on:
       pr:
         type: number
 
-permissions: write-all
+permissions:
+  contents: read
+  issues: write
 
 jobs:
   comment:
