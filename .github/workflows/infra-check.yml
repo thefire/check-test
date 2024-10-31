@@ -55,3 +55,10 @@ jobs:
           status: ${{ job.status }}
           context: Infra check comment
           sha: ${{ steps.pr-ref.outputs.head_sha }}
+      - name: Set check status again
+        if: ${{ (github.event_name == 'pull_request_review' && contains(github.event.pull_request.head.ref, 'test-') ) || contains(steps.pr-ref.outputs.head_ref, 'test-') }}
+        uses: myrotvorets/set-commit-status-action@v2.0.1
+        with:
+          status: ${{ job.status }}
+          context: Infra check testing
+          sha: ${{ github.event_name == 'issue_comment' && steps.pr-ref.outputs.head_sha || github.event.pull_request.head.sha }}
